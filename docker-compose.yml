@@ -7,3 +7,9 @@ services:
     volumes:
       - ./backend/app/data:/app/app/data
     restart: unless-stopped
+    networks:
+      - npm_net
+networks:
+    npm_net:
+        name: npm_net
+        external: true 
