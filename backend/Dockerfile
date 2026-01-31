@@ -1,17 +1,17 @@
 FROM python:3.12-slim
 
-# نصب uv
+# install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
 
-# کپی فایل‌های dependency
+# copy file for dependency
 COPY pyproject.toml uv.lock* ./
 
-# نصب وابستگی‌ها
+# install dependency 
 RUN uv sync --frozen --no-dev
 
-# کپی سورس
+# copy source of program
 COPY app ./app
 
 EXPOSE 8000
